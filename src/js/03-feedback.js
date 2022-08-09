@@ -12,6 +12,7 @@ restoreFormData();
 function restoreFormData() {
     const savedData = localStorage.getItem(STORAGE_KEY);
     if (savedData) {
+   
     const parsedData = JSON.parse(savedData)
     const elements = form.querySelectorAll('[name]')
 
