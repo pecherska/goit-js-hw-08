@@ -13,20 +13,17 @@ function restoreFormData() {
     const savedData = localStorage.getItem(STORAGE_KEY);
     if (savedData) {
    
-    const parsedData = JSON.parse(savedData)
-    const elements = form.querySelectorAll('[name]')
+        const parsedData = JSON.parse(savedData)
+        const elements = form.querySelectorAll('[name]')
 
-    for (const element of elements) {
-        if (Object.keys(parsedData).includes(element.name)) {
-            element.value = parsedData[element.name];
-            formData[element.name] = parsedData[element.name];
-
-            console.log(element)
+        for (const element of elements) {
+            if (Object.keys(parsedData).includes(element.name)) {
+                element.value = parsedData[element.name];
+                formData[element.name] = parsedData[element.name];
+            }
         }
-        }
-    }
-
         return;
+    }
 }
 
 function formInput(event) {
@@ -39,7 +36,7 @@ localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 function formSubmit(event) {
     const savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
     event.preventDefault();
-    console.log(savedData);
+    console.log(formData);
     event.target.reset();
     localStorage.removeItem(STORAGE_KEY);
     formData = {};
